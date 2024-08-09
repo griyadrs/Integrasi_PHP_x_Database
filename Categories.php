@@ -4,12 +4,12 @@ require "Database.php";
 
 class Category extends Database
 {
-    private $table = 'categories';
+    private string $table = 'categories';
 
     // Select data
     public function findAll(): array
     {
-        $sql = "SELECT * FROM {$this->table}";
+        $sql    = "SELECT * FROM {$this->table}";
         $result = $this->connection()->query($sql);
 
         if ($result->num_rows > 0) {
@@ -28,7 +28,7 @@ class Category extends Database
     // Add data 
     public function insert()
     {
-        $sql = "INSERT INTO {$this->table} (name) VALUES (?)";
+        $sql  = "INSERT INTO {$this->table} (name) VALUES (?)";
         $stmt = $this->connection()->prepare($sql);
         $stmt->bind_param("s", $_POST['name']);
         $stmt->execute();
@@ -37,7 +37,7 @@ class Category extends Database
     // Update data
     public function update(int $id)
     {
-        $sql = "UPDATE {$this->table} SET name = (?) WHERE id = (?)";
+        $sql  = "UPDATE {$this->table} SET name = (?) WHERE id = (?)";
         $stmt = $this->connection()->prepare($sql);
         $stmt->bind_param("si", $_POST['name'], $id);
         $stmt->execute();
@@ -46,7 +46,7 @@ class Category extends Database
     // Delete data
     public function delete(int $id)
     {
-        $sql = "DELETE FROM {$this->table} WHERE id = (?)";
+        $sql  = "DELETE FROM {$this->table} WHERE id = (?)";
         $stmt = $this->connection()->prepare($sql);
         $stmt->bind_param("i", $id);
         $stmt->execute();
@@ -55,7 +55,7 @@ class Category extends Database
     // Categories.php
     public function findById(int $id)
     {
-        $sql = "SELECT * FROM {$this->table} WHERE id = (?)";
+        $sql  = "SELECT * FROM {$this->table} WHERE id = (?)";
         $stmt = $this->connection()->prepare($sql);
         $stmt->bind_param("i", $id);
         $stmt->execute();
