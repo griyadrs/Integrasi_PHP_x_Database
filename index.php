@@ -56,7 +56,7 @@ if (isset($_GET['edit'])) {
             type        = "text" 
             name        = "name" 
             placeholder = "Category Name" 
-            value --    = "<?= $currentCategory['name'] ?? '' ?>" required>
+            value       = "<?= $currentCategory['name'] ?? '' ?>" required>
         <button type="submit"><?= $currentCategory ? 'Update' : 'Add' ?></button>
     </form>
 
